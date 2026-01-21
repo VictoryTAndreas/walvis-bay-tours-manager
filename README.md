@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🧳 Tourism & Travel Management System
 
 This system will streamline tourism management by allowing customers to browse, book, and pay for tour packages online, while enabling staff, managers, and tour guides to manage bookings, packages, and customer interactions efficiently and let marketing management to track popular packages and how ads are performing. 
@@ -57,3 +58,7 @@ This system will streamline tourism management by allowing customers to browse, 
 - **Security:** JWT-based authentication with role-based access control.
 
 ---
+=======
+# walvisbaytours
+Booking System
+>>>>>>> e5b9b254079bbcf4e993fe20de8336cab7104d3a
