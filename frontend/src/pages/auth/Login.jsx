@@ -56,14 +56,31 @@ export default function Login() {
             </div>
           )}
 
-          <h2 className="logo">
-            <i className="fas fa-key" aria-hidden />Admin
-          </h2>
-          <div className="text-sci">
-            <h2>
-              <span>Login Your Admin Account</span>
+          {/* Logo Section */}
+          <div className="logo-section">
+            {/* Animated Logo */}
+            <div className="logo-animation">
+              <img
+                src="/logo512.png"
+                alt="Company Logo"
+                className="logo-img"
+                onError={(e) => {
+                  e.target.style.display = "none";
+                  const fallback = document.querySelector(".logo-fallback");
+                  if (fallback) fallback.style.display = "flex";
+                }}
+              />
+            </div>
+
+            {/* Company Name */}
+            <h3 className="company-name">Walvis Bay Tours</h3>
+
+            {/* Admin Portal Text */}
+            <h2 className="logo">
+              <i className="fas fa-key" aria-hidden /> Admin Portal
             </h2>
           </div>
+
           {error && <div className="alert alert-danger">{error}</div>}
         </div>
 
@@ -126,6 +143,96 @@ export default function Login() {
           </div>
         </div>
       </div>
+
+      {/* Logo & Animation CSS */}
+      <style jsx>{`
+        .logo-section {
+          text-align: center;
+          margin-bottom: 2rem;
+        }
+
+        .logo-animation {
+          display: inline-block;
+          animation: bounce 2s infinite;
+          position: relative;
+        }
+
+        .logo-img {
+          height: 80px;
+          width: auto;
+          max-width: 200px;
+          object-fit: contain;
+          border-radius: 12px;
+          background: rgba(255, 255, 255, 0.9);
+          padding: 8px;
+          filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+          transition: transform 0.3s ease;
+        }
+
+        .logo-fallback {
+          display: none;
+          width: 80px;
+          height: 80px;
+          margin: 0 auto;
+          border-radius: 50%;
+          background: linear-gradient(135deg, #4a6cf7, #6a11cb);
+          color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 2.5rem;
+          box-shadow: 0 8px 25px rgba(74, 108, 247, 0.4);
+          border: 4px solid rgba(255, 255, 255, 0.2);
+        }
+
+        @keyframes bounce {
+          0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0);
+          }
+          40% { transform: translateY(-15px); }
+          60% { transform: translateY(-8px); }
+        }
+
+        .company-name {
+          font-size: 1.2rem;
+          color: #477da8;
+          margin: 0.5rem 0;
+          letter-spacing: 1px;
+          text-shadow: 0 2px 4px rgba(13, 42, 204, 0.3);
+        }
+
+        .logo {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
+          font-size: 2rem;
+          color: #1d86e9;
+          text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .logo i {
+          color: #152252;
+          font-size: 1.8rem;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: rgba(255, 255, 255, 0.1);
+          border: 2px solid rgba(255, 255, 255, 0.2);
+          backdrop-filter: blur(5px);
+        }
+
+        @media (max-width: 768px) {
+          .logo-img { height: 60px; }
+          .logo-fallback { width: 60px; height: 60px; font-size: 2rem; }
+          .company-name { font-size: 1rem; }
+          .logo { font-size: 1.6rem; }
+          .logo i { width: 40px; height: 40px; font-size: 1.4rem; }
+        }
+      `}</style>
     </div>
   );
 }

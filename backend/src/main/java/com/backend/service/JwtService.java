@@ -1,6 +1,7 @@
 package com.backend.service;
 
 import io.jsonwebtoken.*;
+import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import java.util.Date;
@@ -21,11 +22,11 @@ public class JwtService {
                 .claim("role", role)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + jwtExpiration))
-                .signWith(SignatureAlgorithm.HS256, jwtSecret)
+                .signWith(Keys.hmacShaKeyFor(jwtSecret.getBytes()))
                 .compact();
     }
 
     public Claims validateToken(String token) {
-        return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody();
+        return Jwts.parserBuilder().setSigningKey(Keys.hmacShaKeyFor(jwtSecret.getBytes())).build().parseClaimsJws(token).getBody();
     }
 }

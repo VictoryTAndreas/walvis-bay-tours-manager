@@ -1853,7 +1853,7 @@ const SeniorTravelConsultantDashboard = () => {
             <label style={labelStyle}>First Name *</label>
             <input 
               name="firstName" 
-              placeholder="John" 
+              placeholder="Victory" 
               value={guideFormData.firstName} 
               onChange={handleGuideInputChange}
               style={inputStyle}
@@ -1923,7 +1923,7 @@ const SeniorTravelConsultantDashboard = () => {
             <input 
               type="email"
               name="email" 
-              placeholder="john@example.com" 
+              placeholder="victory@example.com" 
               value={guideFormData.email} 
               onChange={handleGuideInputChange}
               style={inputStyle}

@@ -27,6 +27,9 @@ public class ClientService {
     }
 
     public ClientResponseDTO getById(Long id) {
+        if (id == null) {
+            throw new IllegalArgumentException("Id cannot be null");
+        }
         Client c = repo.findById(id).orElseThrow(() -> new EntityNotFoundException("Client not found"));
         return ClientMapper.toDTO(c);
     }
@@ -38,12 +41,19 @@ public class ClientService {
         if (repo.existsByNic(dto.nic()))
             throw new IllegalArgumentException("NIC already in use");
         String hashed = passwordEncoder.encode(dto.password());
-        Client saved = repo.save(ClientMapper.toEntity(dto, hashed));
+        Client entity = ClientMapper.toEntity(dto, hashed);
+        if (entity == null) {
+            throw new IllegalArgumentException("Failed to create client entity");
+        }
+        Client saved = repo.save(entity);
         return ClientMapper.toDTO(saved);
     }
 
     @Transactional
     public ClientResponseDTO update(Long id, ClientUpdateDTO dto) {
+        if (id == null) {
+            throw new IllegalArgumentException("Id cannot be null");
+        }
         Client c = repo.findById(id).orElseThrow(() -> new EntityNotFoundException("Client not found"));
         if (!c.getEmail().equals(dto.email()) && repo.existsByEmail(dto.email()))
             throw new IllegalArgumentException("Email already in use");
@@ -57,6 +67,9 @@ public class ClientService {
 
     @Transactional
     public void updatePassword(Long id, PasswordUpdateDTO dto) {
+        if (id == null) {
+            throw new IllegalArgumentException("Id cannot be null");
+        }
         Client c = repo.findById(id).orElseThrow(() -> new EntityNotFoundException("Client not found"));
         if (!passwordEncoder.matches(dto.currentPassword(), c.getPassword())) {
             throw new IllegalArgumentException("Current password incorrect");
@@ -67,6 +80,9 @@ public class ClientService {
 
     @Transactional
     public void delete(Long id) {
+        if (id == null) {
+            throw new IllegalArgumentException("Id cannot be null");
+        }
         repo.deleteById(id);
     }
 }

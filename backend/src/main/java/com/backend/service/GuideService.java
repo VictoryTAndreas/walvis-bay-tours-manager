@@ -31,6 +31,9 @@ public class GuideService {
     }
 
     public Guide updateGuide(Long id, Guide g) {
+        if (id == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "ID cannot be null");
+        }
         var existing = repo.findById(id).orElseThrow();
 
         if (repo.existsByEmailIgnoreCaseAndGuideIDNot(g.getEmail(), id))
@@ -52,6 +55,8 @@ public class GuideService {
     }
 
     public void deleteGuide(Long id) {
-        repo.deleteById(id);
+        if (id != null) {
+            repo.deleteById(id);
+        }
     }
 }

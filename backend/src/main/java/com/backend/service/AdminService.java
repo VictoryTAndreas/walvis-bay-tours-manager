@@ -26,6 +26,8 @@ public class AdminService {
     }
 
     public AdminResponseDTO getById(Long id) {
+        if (id == null)
+            throw new IllegalArgumentException("Id cannot be null");
         Admin a = repo.findById(id).orElseThrow(() -> new EntityNotFoundException("Admin not found"));
         return AdminMapper.toDTO(a);
     }
@@ -35,12 +37,17 @@ public class AdminService {
         if (repo.existsByEmail(dto.email()))
             throw new IllegalArgumentException("Email already in use");
         String hashed = passwordEncoder.encode(dto.password());
-        Admin saved = repo.save(AdminMapper.toEntity(dto, hashed));
+        Admin admin = AdminMapper.toEntity(dto, hashed);
+        if (admin == null)
+            throw new IllegalArgumentException("Failed to create admin entity");
+        Admin saved = repo.save(admin);
         return AdminMapper.toDTO(saved);
     }
 
     @Transactional
     public AdminResponseDTO update(Long id, AdminUpdateDTO dto) {
+        if (id == null)
+            throw new IllegalArgumentException("Id cannot be null");
         Admin a = repo.findById(id).orElseThrow(() -> new EntityNotFoundException("Admin not found"));
         if (!a.getEmail().equals(dto.email()) && repo.existsByEmail(dto.email()))
             throw new IllegalArgumentException("Email already in use");
@@ -52,6 +59,8 @@ public class AdminService {
 
     @Transactional
     public void updatePassword(Long id, AdminPasswordUpdateDTO dto) {
+        if (id == null)
+            throw new IllegalArgumentException("Id cannot be null");
         Admin a = repo.findById(id).orElseThrow(() -> new EntityNotFoundException("Admin not found"));
         if (!passwordEncoder.matches(dto.currentPassword(), a.getPassword())) {
             throw new IllegalArgumentException("Current password incorrect");
@@ -62,6 +71,8 @@ public class AdminService {
 
     @Transactional
     public void delete(Long id) {
+        if (id == null)
+            throw new IllegalArgumentException("Id cannot be null");
         repo.deleteById(id);
     }
 }
