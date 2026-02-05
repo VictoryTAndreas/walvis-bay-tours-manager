@@ -1,0 +1,42 @@
+{
+  "files": {
+    "main.css": "/walvis-bay-tours-manager/static/css/main.e4bec3ba.css",
+    "main.js": "/walvis-bay-tours-manager/static/js/main.9c4c13de.js",
+    "static/js/389.2591e4e2.chunk.js": "/walvis-bay-tours-manager/static/js/389.2591e4e2.chunk.js",
+    "static/js/239.ad40150f.chunk.js": "/walvis-bay-tours-manager/static/js/239.ad40150f.chunk.js",
+    "static/js/977.7a7b0c82.chunk.js": "/walvis-bay-tours-manager/static/js/977.7a7b0c82.chunk.js",
+    "static/js/455.c82eeaab.chunk.js": "/walvis-bay-tours-manager/static/js/455.c82eeaab.chunk.js",
+    "static/media/Image.jpeg": "/walvis-bay-tours-manager/static/media/Image.590de676ae0d5bc0b211.jpeg",
+    "static/media/Image1.jpeg": "/walvis-bay-tours-manager/static/media/Image1.00eaa8730eeaea16b7ac.jpeg",
+    "static/media/Image2.jpeg": "/walvis-bay-tours-manager/static/media/Image2.fd389c00160192f810f9.jpeg",
+    "static/media/Image5.jpeg": "/walvis-bay-tours-manager/static/media/Image5.0e9d3f170ac2a2b88cb3.jpeg",
+    "static/media/Image15.jpeg": "/walvis-bay-tours-manager/static/media/Image15.ada8e9b22a8a915cf3f7.jpeg",
+    "static/media/Image4.jpeg": "/walvis-bay-tours-manager/static/media/Image4.85e4fa82c8c7df37db21.jpeg",
+    "static/media/Image9.jpeg": "/walvis-bay-tours-manager/static/media/Image9.7e1727d948e308006442.jpeg",
+    "static/media/Image3.jpeg": "/walvis-bay-tours-manager/static/media/Image3.6af1656afad8e77ae544.jpeg",
+    "static/media/fa-solid-900.woff2": "/walvis-bay-tours-manager/static/media/fa-solid-900.f54756da1f3d1b88887f.woff2",
+    "static/media/fa-brands-400.woff2": "/walvis-bay-tours-manager/static/media/fa-brands-400.1f6bad931d92a0a52c45.woff2",
+    "static/media/Image12.jpeg": "/walvis-bay-tours-manager/static/media/Image12.52a5420482aa99e82aab.jpeg",
+    "static/media/Image10.jpeg": "/walvis-bay-tours-manager/static/media/Image10.5ab4c643ffa2770da04d.jpeg",
+    "static/media/Image7.jpeg": "/walvis-bay-tours-manager/static/media/Image7.1968882dbd103c90e66e.jpeg",
+    "static/media/Image11.jpeg": "/walvis-bay-tours-manager/static/media/Image11.5cad34c5bb90306a0032.jpeg",
+    "static/media/Image8.jpeg": "/walvis-bay-tours-manager/static/media/Image8.b857cf0ce7a5545ccb7a.jpeg",
+    "static/media/Image14.jpeg": "/walvis-bay-tours-manager/static/media/Image14.098bd1035fa6261faf0e.jpeg",
+    "static/media/Image6.jpeg": "/walvis-bay-tours-manager/static/media/Image6.6860cf05b922dae14b1a.jpeg",
+    "static/media/Image13.jpeg": "/walvis-bay-tours-manager/static/media/Image13.f6ecc1a6d3d4aeb0962e.jpeg",
+    "static/media/fa-regular-400.woff2": "/walvis-bay-tours-manager/static/media/fa-regular-400.5632c43107f4d3fa4806.woff2",
+    "static/media/fa-v4compatibility.woff2": "/walvis-bay-tours-manager/static/media/fa-v4compatibility.24fc9d217708cb3f0362.woff2",
+    "static/media/undraw_profile.svg": "/walvis-bay-tours-manager/static/media/undraw_profile.28817a9a525894d99d681c82d5f3a257.svg",
+    "index.html": "/walvis-bay-tours-manager/index.html",
+    "main.e4bec3ba.css.map": "/walvis-bay-tours-manager/static/css/main.e4bec3ba.css.map",
+    "main.9c4c13de.js.map": "/walvis-bay-tours-manager/static/js/main.9c4c13de.js.map",
+    "389.2591e4e2.chunk.js.map": "/walvis-bay-tours-manager/static/js/389.2591e4e2.chunk.js.map",
+    "239.ad40150f.chunk.js.map": "/walvis-bay-tours-manager/static/js/239.ad40150f.chunk.js.map",
+    "977.7a7b0c82.chunk.js.map": "/walvis-bay-tours-manager/static/js/977.7a7b0c82.chunk.js.map",
+    "455.c82eeaab.chunk.js.map": "/walvis-bay-tours-manager/static/js/455.c82eeaab.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e4bec3ba.css",
+    "static/js/main.9c4c13de.js"
+  ]
+}
