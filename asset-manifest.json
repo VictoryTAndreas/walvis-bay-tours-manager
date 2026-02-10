@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/walvis-bay-tours-manager/static/css/main.e4bec3ba.css",
-    "main.js": "/walvis-bay-tours-manager/static/js/main.9c4c13de.js",
+    "main.js": "/walvis-bay-tours-manager/static/js/main.4f89698b.js",
     "static/js/389.2591e4e2.chunk.js": "/walvis-bay-tours-manager/static/js/389.2591e4e2.chunk.js",
     "static/js/239.ad40150f.chunk.js": "/walvis-bay-tours-manager/static/js/239.ad40150f.chunk.js",
     "static/js/977.7a7b0c82.chunk.js": "/walvis-bay-tours-manager/static/js/977.7a7b0c82.chunk.js",
@@ -29,7 +29,7 @@
     "static/media/undraw_profile.svg": "/walvis-bay-tours-manager/static/media/undraw_profile.28817a9a525894d99d681c82d5f3a257.svg",
     "index.html": "/walvis-bay-tours-manager/index.html",
     "main.e4bec3ba.css.map": "/walvis-bay-tours-manager/static/css/main.e4bec3ba.css.map",
-    "main.9c4c13de.js.map": "/walvis-bay-tours-manager/static/js/main.9c4c13de.js.map",
+    "main.4f89698b.js.map": "/walvis-bay-tours-manager/static/js/main.4f89698b.js.map",
     "389.2591e4e2.chunk.js.map": "/walvis-bay-tours-manager/static/js/389.2591e4e2.chunk.js.map",
     "239.ad40150f.chunk.js.map": "/walvis-bay-tours-manager/static/js/239.ad40150f.chunk.js.map",
     "977.7a7b0c82.chunk.js.map": "/walvis-bay-tours-manager/static/js/977.7a7b0c82.chunk.js.map",
@@ -37,6 +37,6 @@
   },
   "entrypoints": [
     "static/css/main.e4bec3ba.css",
-    "static/js/main.9c4c13de.js"
+    "static/js/main.4f89698b.js"
   ]
 }
