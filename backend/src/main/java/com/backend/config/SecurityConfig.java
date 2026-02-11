@@ -62,8 +62,6 @@ public class SecurityConfig {
         
         // Include Vite (5173), legacy React (3000), and your production URL
         cfg.setAllowedOrigins(List.of(
-            "http://localhost:5173", 
-            "http://localhost:3000", 
             "https://victorytandreas.github.io"
         ));
         
