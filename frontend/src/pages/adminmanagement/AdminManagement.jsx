@@ -912,7 +912,7 @@ export default function ModernAdminsPage() {
       </ModernModal>
 
       {/* Modern Styles */}
-      <style jsx>{`
+      <style>{`
         .modern-card {
           border-radius: 16px;
           background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);

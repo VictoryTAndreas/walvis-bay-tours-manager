@@ -3,9 +3,13 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import AuthLayout from "./layouts/AuthLayout";
 import Login from "./pages/auth/Login";
 import Logout from "./pages/auth/Logout";
-
+import Home from "./pages/client/Home";
+import ClientLogin from "./pages/client/Login";
+import SignUp from "./pages/client/SignUp";
+import Dashboard from "./pages/client/Dashboard";
+import Payments from "./pages/client/payments";
 import TravelLoader from "./components/Loading";
-
+import Bookings from "./pages/client/Bookings";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import RoleRoute from "./routes/RoleRoute";
 
@@ -35,6 +39,10 @@ import PackagesList from "./pages/client/PackagesList";
 import "./App.css";
 import PaymentHistory from "./components/MarketingManager/PaymentHistory";
 import PopularPackage from "./components/MarketingManager/PopularPackage";
+import Wishlist from "./pages/client/wishlist";
+import Support from "./pages/client/support";
+import Settings from "./pages/client/settings";
+import Reviews from "./pages/client/reviews";
 
 
 function App() {
@@ -202,9 +210,22 @@ function App() {
                   calendarSettings={calendarSettings}
               />
         } />
+        {/* Client routes */}
 
         <Route path="/packages" element={<PackagesList />} />
-       
+        <Route path="/Home" element={<Home />} />
+        <Route path="/client/login" element={<ClientLogin />} />
+        <Route path="/client/signup" element={<SignUp />} />
+        <Route path="/client/Dashboard" element={<Dashboard />} />
+        <Route path="/client/packages" element={<PackagesList />} />
+        <Route path="/client/bookings" element={<Bookings />} />
+        <Route path="/client/payments" element={<Payments />} />
+        <Route path="/client/wishlist" element={<Wishlist />} />
+        <Route path="/client/support" element={<Support />} />
+        <Route path="/client/settings" element={<Settings />} />
+        <Route path="/client/reviews" element={<Reviews />} />
+        
+
 
       </Route>
 

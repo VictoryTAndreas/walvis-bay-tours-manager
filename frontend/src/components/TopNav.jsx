@@ -94,7 +94,7 @@ const Topbar = ({ userName, onToggleSidebar, onLogout, rightItems }) => {
       {/* System Name – constant */}
       <div className="topbar-title text-center">
         <span className="system-name">
-          Walvis Bay Tours Management System
+          Walvis Bay Tours
         </span>
       </div>
 

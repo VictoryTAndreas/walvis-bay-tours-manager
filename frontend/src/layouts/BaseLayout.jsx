@@ -19,11 +19,49 @@ export default function BaseLayout() {
     "/packages",
     "/package-details",
     "/popular-package",
+    "/Home",
+    "/client/login",
+    "/client/signup",
+    "/client/bookings",
+    "/client/dashboard",
+    "/client/payments",
+    "/client/reviews",
+    "/client/settings",
+    "/client/support",
+    "/client/wishlist",
+    "/client/packages",
     "/payment"
   ];
 
-  const hideSidebar = noSidebarPaths.some(path =>
-    location.pathname === path || location.pathname.startsWith(path)
+  // Pages where top navbar should be hidden
+  const noNavbarPaths = [
+    "/packages",
+    "/package-details",
+    "/popular-package",
+    "/Home",
+    "/client/login",
+    "/client/signup",
+    "/client/bookings",
+    "/client/dashboard",
+    "/client/payments",
+    "/client/reviews",
+    "/client/settings",
+    "/client/support",
+    "/client/wishlist",
+    "/client/packages",
+    "/payment"
+  ];
+
+  const hideSidebar = noSidebarPaths.some(
+    path =>
+      location.pathname === path ||
+      location.pathname.startsWith(path)
+  );
+
+  const hideNavbar = noNavbarPaths.some(
+    path =>
+      location.pathname === path ||
+      location.pathname.startsWith(path)
   );
 
   useEffect(() => {
@@ -39,11 +77,15 @@ export default function BaseLayout() {
 
   useEffect(() => {
     document.body.style.overflow = sidebarMobileOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [sidebarMobileOpen]);
 
   useEffect(() => {
-    const onKey = (e) => { if (e.key === "Escape") setSidebarMobileOpen(false); };
+    const onKey = (e) => {
+      if (e.key === "Escape") setSidebarMobileOpen(false);
+    };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
@@ -66,15 +108,14 @@ export default function BaseLayout() {
 
   return (
     <div className="app-wrapper d-flex">
-      {/* Desktop sidebar */}
-{!hideSidebar && (
-  <nav className="d-none d-md-block" aria-label="Primary">
-    <SideNav toggled={sidebarCollapsed} onItemClick={null} />
-  </nav>
-)}
+      {/* DESKTOP SIDEBAR */}
+      {!hideSidebar && (
+        <nav className="d-none d-md-block" aria-label="Primary">
+          <SideNav toggled={sidebarCollapsed} />
+        </nav>
+      )}
 
-
-      {/* Mobile sidebar */}
+      {/* MOBILE SIDEBAR */}
       {!hideSidebar && (
         <div className="d-md-none" role="navigation" aria-label="Primary">
           <div
@@ -87,19 +128,25 @@ export default function BaseLayout() {
             id="mobileSidebar"
             aria-hidden={!sidebarMobileOpen}
           >
-            <SideNav toggled={false} onItemClick={() => setSidebarMobileOpen(false)} />
+            <SideNav
+              toggled={false}
+              onItemClick={() => setSidebarMobileOpen(false)}
+            />
           </div>
         </div>
       )}
 
-      {/* Main content */}
+      {/* MAIN CONTENT */}
       <div className="app-content flex-grow-1 d-flex flex-column">
-        {/* Top nav always visible */}
-        <TopNav
-          userName={userName}
-          onToggleSidebar={toggleSidebar}
-          onLogout={() => window.location.assign("/logout")}
-        />
+        {/* TOP NAV — HIDDEN ON CLIENT PAGES */}
+        {!hideNavbar && (
+          <TopNav
+            userName={userName}
+            onToggleSidebar={toggleSidebar}
+            onLogout={() => window.location.assign("/logout")}
+          />
+        )}
+
         <main className="p-3 flex-grow-1 scrollable">
           <Outlet />
         </main>
