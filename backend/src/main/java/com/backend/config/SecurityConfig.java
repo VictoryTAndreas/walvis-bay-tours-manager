@@ -13,6 +13,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.List;
 
 @Configuration
 @RequiredArgsConstructor
@@ -24,43 +29,18 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
-                .cors(c -> {
-                })
+                // IMPORTANT: You must link the CORS configuration source here
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll()
-                        .requestMatchers("/api/payments/**").permitAll()
-                        .requestMatchers("/api/manager/dashboard/**").hasRole("GENERAL_MANAGER")
+                        .requestMatchers("/api/auth/**", "/api/payments/**", "/api/promotions/**", "/api/packages/**", "/api/guides/**", "/api/availability/**", "/api/reports/**").permitAll()
+                        .requestMatchers("/api/manager/dashboard/**", "/api/clients/**", "/api/adminmanagement/**").permitAll()
                         .requestMatchers("/api/consultant/**").hasRole("SENIOR_TRAVEL_CONSULTANT")
-                        .requestMatchers("/api/customer-service/**").hasRole("CUSTOMER_SERVICE_EXECUTIVE")
+                        .requestMatchers("/api/customer-service/**", "/api/reservations/**").hasRole("CUSTOMER_SERVICE_EXECUTIVE")
                         .requestMatchers("/api/marketing/**").hasRole("MARKETING_MANAGER")
-
-                        .requestMatchers("/api/admin/**").hasAnyRole(
-                                "GENERAL_MANAGER",
-                                "SENIOR_TRAVEL_CONSULTANT",
-                                "CUSTOMER_SERVICE_EXECUTIVE",
-                                "MARKETING_MANAGER")
-
-                        .requestMatchers("/api/clients/**").hasRole("GENERAL_MANAGER")
-
-                        .requestMatchers("/api/adminmanagement/**").hasRole("GENERAL_MANAGER")
-
-                        .requestMatchers("/api/promotions/**").permitAll()
-
-                        .requestMatchers("/api/packages/**").permitAll()
-
-                        .requestMatchers("/api/guides/**").permitAll()
-
-                        .requestMatchers("/api/reservations/**").hasRole("CUSTOMER_SERVICE_EXECUTIVE")
-
-                        .requestMatchers("/api/availability/**").permitAll()
-
-                        .requestMatchers("/api/reports/**").permitAll()
-
+                        .requestMatchers("/api/admin/**").hasAnyRole("GENERAL_MANAGER", "SENIOR_TRAVEL_CONSULTANT", "CUSTOMER_SERVICE_EXECUTIVE", "MARKETING_MANAGER")
                         .anyRequest().authenticated())
-
                 .sessionManagement(sess -> sess
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
@@ -77,12 +57,25 @@ public class SecurityConfig {
     }
 
     @Bean
-    org.springframework.web.cors.CorsConfigurationSource corsConfigurationSource() {
-        var cfg = new org.springframework.web.cors.CorsConfiguration();
-        cfg.setAllowedOrigins(java.util.List.of("http://localhost:3000"));
-        cfg.setAllowedMethods(java.util.List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
-        cfg.setAllowedHeaders(java.util.List.of("Authorization", "Content-Type"));
-        var source = new org.springframework.web.cors.UrlBasedCorsConfigurationSource();
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration cfg = new CorsConfiguration();
+        
+        // Include Vite (5173), legacy React (3000), and your production URL
+        cfg.setAllowedOrigins(List.of(
+            "http://localhost:5173", 
+            "http://localhost:3000", 
+            "https://victorytandreas.github.io"
+        ));
+        
+        cfg.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
+        
+        // Allowing all headers avoids issues with custom JWT or Content-Type headers
+        cfg.setAllowedHeaders(List.of("*"));
+        
+        // Essential if you are using cookies or Authorization headers
+        cfg.setAllowCredentials(true);
+        
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", cfg);
         return source;
     }
