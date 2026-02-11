@@ -18,6 +18,7 @@ import java.time.format.TextStyle;
 import java.util.*;
 import java.util.stream.Collectors;
 
+@SuppressWarnings("unused")
 @Service
 @RequiredArgsConstructor
 public class ManagerService {
