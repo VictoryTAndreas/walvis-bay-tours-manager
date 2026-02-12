@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const api = axios.create({ baseURL: process.env.REACT_APP_API_BASE_URL || "http://localhost:8080/api" });
+const api = axios.create({ baseURL: process.env.REACT_APP_API_BASE_URL || "https://walvis-bay-tours-manager.onrender.com/api" });
 
 // attach token
 api.interceptors.request.use((config) => {
